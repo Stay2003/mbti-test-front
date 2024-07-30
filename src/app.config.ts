@@ -1,6 +1,6 @@
 export default defineAppConfig({
   pages: [
-    'pages/user/index',
+    'pages/doQuestion/index',
     'pages/index/index'
 
   ],
