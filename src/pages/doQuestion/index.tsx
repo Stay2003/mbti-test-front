@@ -7,6 +7,7 @@ import { AtButton, AtRadio } from "taro-ui";
 
 import questions from "../../data/questions.json";
 import { useEffect, useState } from "react";
+import Taro from "@tarojs/taro";
 
 /**
  * 做题页面
@@ -73,10 +74,18 @@ export default () => {
       )}
       {current === questions.length && (
         <AtButton
+          type="primary"
+          size="normal"
+          className="controlBtn"
           circle
-          className='controlBtn'
           disabled={!currentAnswer}
-          onClick={() => { /* 查看结果逻辑 */ }}>
+          onClick={() => {
+            Taro.setStorageSync('answerList', answerList);
+            Taro.navigateTo({
+              url: "/pages/result/index",
+            });
+          }}
+        >
           查看结果
         </AtButton>
       )}
